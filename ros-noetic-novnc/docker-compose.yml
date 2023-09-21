@@ -1,3 +1,6 @@
+# merging docker-compose.yml from:
+# mobile_robot_control\docker\ros-systems\ros-rbvogui-indoor-demo-melodic
+# ur_fabrication_control\docker\ros-systems\ros-ur10e-demo
 version: '2'
 services:
   # ros-master:

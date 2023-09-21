@@ -1,11 +1,10 @@
 # https://github.com/solarkennedy/wine-x11-novnc-docker/tree/master
-FROM ubuntu:focal
+FROM ubuntu:focal-slim
 #focal ros:noetic
 #bionic ros:melodic
 
 
-RUN apt-get update && apt-get -y \
-    install \
+RUN apt-get update && apt-get install -y \
     python3 \
     python-is-python3 \
     xvfb \

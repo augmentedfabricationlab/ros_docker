@@ -8,17 +8,29 @@ FROM debian:buster-slim
 
 # Install git, supervisor, VNC, & X11 packages
 RUN apt-get update && apt-get install -y \
+    # A lightweight shell
     bash \
+    # SSL certificates for secure connections
     ca-certificates \
+    # A lightweight window manager
     fluxbox \
+    # Version control system
     git \
+    # Network configuration tools
     net-tools \
+    # Process monitoring tools
     procps \
+    # Python 3 interpreter
     python3 \
+    # Network utility for bidirectional data transfer
     socat \
+    # Process control system
     supervisor \
+    # VNC server for X11
     x11vnc \
+    # Terminal emulator for X11
     xterm \
+    # Virtual framebuffer for X11
     xvfb \
     # Clear apt-cache to reduce image size
     && rm -rf /var/lib/apt/lists/*
