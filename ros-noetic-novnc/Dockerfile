@@ -1,7 +1,8 @@
 # https://github.com/solarkennedy/wine-x11-novnc-docker/tree/master
-FROM ubuntu:focal-slim
-#focal ros:noetic
-#bionic ros:melodic
+FROM ubuntu:focal
+#focal(20) ros:noetic
+#bionic(18) ros:melodic
+#xenial(16) ros:kinetic
 
 
 RUN apt-get update && apt-get install -y \
@@ -27,8 +28,8 @@ ENV HOME=/root \
     LANGUAGE=en_US.UTF-8 \
     LC_ALL=C.UTF-8 \
     DISPLAY=:0.0 \
-    DISPLAY_WIDTH=1024 \
-    DISPLAY_HEIGHT=768 \
+    # DISPLAY_WIDTH=1600 \
+    # DISPLAY_HEIGHT=1200 \
     RUN_FLUXBOX=yes
 
 WORKDIR /root/
