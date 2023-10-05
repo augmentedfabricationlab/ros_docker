@@ -3,16 +3,22 @@ FROM ubuntu:focal
 #focal(20) ros:noetic
 #bionic(18) ros:melodic
 #xenial(16) ros:kinetic
-
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y \
+    bash \
+    ca-certificates \
+    git \
+    procps \
     python3 \
     python-is-python3 \
     xvfb \
     x11vnc \
+    xterm \
     xdotool \
     wget \
     tar \
+    socat \
     supervisor \
     net-tools \
     fluxbox \
@@ -36,6 +42,9 @@ WORKDIR /root/
 RUN wget -O - https://github.com/novnc/noVNC/archive/v1.1.0.tar.gz | tar -xzv -C /root/ && mv /root/noVNC-1.1.0 /root/novnc && ln -s /root/novnc/vnc_lite.html /root/novnc/index.html && \
     wget -O - https://github.com/novnc/websockify/archive/v0.9.0.tar.gz | tar -xzv -C /root/ && mv /root/websockify-0.9.0 /root/novnc/utils/websockify
 
+ COPY . /root
+
 EXPOSE 8080
 
-CMD ["/usr/bin/supervisord"]
+# CMD ["/usr/bin/supervisord"]
+CMD ["supervisord", "-c", "/root/.supervisord/supervisord.conf"]
