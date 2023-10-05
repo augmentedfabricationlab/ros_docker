@@ -1,3 +1,14 @@
+# Basics: 
+## Building a Docker Image:
+  docker build -t test . 
+docker build builds an image. The -t lets you add a name, in this case "test" and we will do it in the directory specified in the end, here "." (which means current folder)
+
+## 
+run an image:
+docker run -it test
+docker run runs an image. The -it opens an interactive (-i) terminal (-t), which keeps the virtual running.
+
+
 # ROS Docker files
 
 > ROS Noetic images: a containerized version of various ROS nodes.
