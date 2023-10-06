@@ -1,7 +1,8 @@
 # Basics: 
 ## Building a Docker Image:
-  docker build -t test . 
-docker build builds an image. The -t lets you add a name, in this case "test" and we will do it in the directory specified in the end, here "." (which means current folder)
+  docker build --rm -f Dockerfile -t daricht/ros-noetic-moveit:latest .
+docker build builds an image. The -t lets you add a name or tag, in this case "daricht/ros-noetic-moveit:latest" and we will do it in the directory specified in the end, here "." (which means current folder). "daricht" is the name of the docker hub account it will be made available in. "ros-noetic-moveit" is the name of the image and the ":latest" gives an optional version name.
+-rm saves diskspace by removing "temporary" images
 
 ## 
 run an image:
