@@ -37,7 +37,7 @@ services:
     environment:
       - ROS_HOSTNAME=ros-fileserver
       - ROS_MASTER_URI=http://ros-master:11311
-      - DISPLAY=novnc:0.0
+      - DISPLAY=gui:0.0
     depends_on:
       - ros-master
     command:
@@ -54,10 +54,10 @@ services:
     environment:
       - ROS_HOSTNAME=rbvogui-demo
       - ROS_MASTER_URI=http://ros-master:11311
-      - DISPLAY=novnc:0.0
+      - DISPLAY=gui:0.0
     depends_on:
       - ros-master
-      - novnc
+      - gui
     command:
       - roslaunch
       - --wait
@@ -67,13 +67,8 @@ services:
     networks:
       - X11
 
-  novnc:
-    image: theasp/novnc:latest
-    environment:
-      # Adjust to your screen size
-      - DISPLAY_WIDTH=1600
-      - DISPLAY_HEIGHT=968
-      - RUN_XTERM=no
+  gui:
+    image: daricht/ros-noetic-novnc:latest
     ports:
       - "8080:8080"
     networks:
