@@ -1,11 +1,14 @@
 # Basics: 
+
+## go to the directory your dockerfile is located in
+cd .\path\to\file\
+
 ## Building a Docker Image:
   docker build --rm -f Dockerfile -t daricht/ros-noetic-moveit:latest .
-docker build builds an image. The -t lets you add a name or tag, in this case "daricht/ros-noetic-moveit:latest" and we will do it in the directory specified in the end, here "." (which means current folder). "daricht" is the name of the docker hub account it will be made available in. "ros-noetic-moveit" is the name of the image and the ":latest" gives an optional version name.
+docker build builds an image. The -t lets you add a name or tag, in this case "daricht/ros-noetic-moveit:latest" and we will do it in the directory specified in the end, here "." (which means current folder). "daricht" is in this case the name of the docker hub account it will be made available in. "ros-noetic-moveit" is the name of the image and the ":latest" gives an optional version name.
 -rm saves diskspace by removing "temporary" images
 
-## 
-run an image:
+## Run an image:
 docker run -it test
 docker run runs an image. The -it opens an interactive (-i) terminal (-t), which keeps the virtual running.
 
