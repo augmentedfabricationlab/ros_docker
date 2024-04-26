@@ -1,5 +1,5 @@
 # Build:
-#  docker build --rm -f Dockerfile -t augmentedfabricationlab/ros-abb-fabtory-planner .
+#  docker build --rm -f Dockerfile -t daricht/rbvogui:latest .
 #
 # Usage:
 #  docker pull augmentedfabricationlab/ros-abb-fabtory-planner
@@ -20,7 +20,7 @@ RUN echo "Sourcing.." \
     && source /opt/ros/${ROS_DISTRO}/setup.bash \
     # Update apt-get because its cache is always cleared after installs to keep image size down
     && apt-get -y update && apt-get -y upgrade \
-    && apt-get install -y libserial-dev \
+    && apt-get install -y libserial-dev wget \
     # && apt-get install -y ros-noetic-descartes \
     # && apt-get update && apt-get -y upgrade \
     && git clone -b noetic-devel https://github.com/ros/xacro.git \
@@ -32,6 +32,18 @@ RUN echo "Sourcing.." \
     && git clone https://github.com/RobotnikAutomation/ewellix_description.git \
     && git clone https://github.com/augmentedfabricationlab/robotic_setups_description.git
    # && git clone https://github.com/utexas-bwi/eband_local_planner.git
+
+#update collision geometry
+RUN rm -rf /root/catkin_ws/src/robotnik_sensors/meshes/rs_bpearl.stl 
+RUN rm -rf /root/catkin_ws/src/robotnik_sensors/meshes/antenna_ANN_MB_mast.stl
+RUN rm -rf /root/catkin_ws/src/ewellix_description/meshes/ewellix_lift_base_700mm.stl
+RUN rm -rf /root/catkin_ws/src/ewellix_description/meshes/ewellix_lift_top_700mm.stl
+
+RUN wget -O /root/catkin_ws/src/robotnik_sensors/meshes/antenna_ANN_MB_mast.stl https://github.com/daricht/collision_geometry/blob/main/antenna_ANN_MB_mast.stl?raw=true
+RUN wget -O /root/catkin_ws/src/robotnik_sensors/meshes/rs_bpearl.stl https://github.com/daricht/collision_geometry/raw/main/rs_bpearl.stl?raw=true
+RUN wget -O /root/catkin_ws/src/ewellix_description/meshes/ewellix_lift_base_700mm.stl https://github.com/daricht/collision_geometry/blob/main/ewellix_lift_base_700mm.stl?raw=true
+RUN wget -O /root/catkin_ws/src/ewellix_description/meshes/ewellix_lift_top_700mm.stl https://github.com/daricht/collision_geometry/blob/main/ewellix_lift_top_700mm.stl?raw=true
+
     
 RUN echo "Building tools..." \
     # Install dependencies
