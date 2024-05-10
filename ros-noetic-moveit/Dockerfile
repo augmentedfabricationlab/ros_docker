@@ -33,7 +33,7 @@ RUN echo "Building common MoveIt Planners" \
     # Add Bio-IK kinematic solver
     && git clone https://github.com/TAMS-Group/bio_ik.git \
     # UR packages
-    && git clone -b calibration_devel https://github.com/fmauch/universal_robot.git \
+    && git clone -b noetic-devel https://github.com/ros-industrial/universal_robot.git \
     # ABB packages (abb_driver only included because some other packages reference it, but we don't use it)
     && git clone https://github.com/ros-industrial/abb.git \
     && git clone https://github.com/ros-industrial/abb_driver.git \
