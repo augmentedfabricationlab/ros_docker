@@ -6,7 +6,7 @@
 
 ARG FROM_IMAGE_TAG
 
-FROM gramaziokohler/ros-noetic-base:latest
+FROM augmentedfabricationlab/ros-noetic-base:latest
 LABEL maintainer "Gido Dielemans <gido.dielemans@tum.de>"
 
 SHELL ["/bin/bash","-c"]
@@ -29,7 +29,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Add robot packages to local catkin workspace
 RUN echo "Building common MoveIt Planners" \
     && source /opt/ros/${ROS_DISTRO}/setup.bash \
-    && apt-get update && apt-get -y upgrade \
+    && apt-get -y update && apt-get -y upgrade \
+    && apt update apt-transport-https \
     # Add Bio-IK kinematic solver
     # && git clone https://github.com/TAMS-Group/bio_ik.git \
     # UR packages

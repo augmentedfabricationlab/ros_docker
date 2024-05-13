@@ -5,7 +5,7 @@
 #  docker pull gramaziokohler/ros-noetic-base
 
 FROM ros:noetic
-LABEL maintainer "Gonzalo Casas <casas@arch.ethz.ch>"
+LABEL maintainer "David Richter <david.richter@tum.de>"
 
 SHELL ["/bin/bash","-c"]
 
@@ -42,14 +42,14 @@ RUN source /opt/ros/${ROS_DISTRO}/setup.bash \
     # Build catkin workspace
     && catkin_make
 
-# Always source ros_catkin_entrypoint.sh when launching bash (e.g. when attaching to container)
-RUN echo "source /usr/local/bin/ros_catkin_entrypoint.sh" >> /root/.bashrc
-
 COPY roscore_check.py /usr/local/bin/roscore_check.py
 COPY ros_catkin_entrypoint.sh /usr/local/bin/ros_catkin_entrypoint.sh
 
 RUN chmod +x /usr/local/bin/roscore_check.py
 RUN chmod +x /usr/local/bin/ros_catkin_entrypoint.sh
+
+# Always source ros_catkin_entrypoint.sh when launching bash (e.g. when attaching to container)
+RUN echo "source /usr/local/bin/ros_catkin_entrypoint.sh" >> /root/.bashrc
 
 ENTRYPOINT ["/usr/local/bin/ros_catkin_entrypoint.sh"]
 CMD ["bash"]
