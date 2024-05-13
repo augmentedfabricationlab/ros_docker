@@ -1,5 +1,9 @@
 # Basics: 
 
+This repository conatins a few different Docker files that cross refernce each other to build up a Docker image with specific functionality, with the overall goal of simulating robots. They start basic and include just a Base ROS noetic installation for example and build up from there.
+
+In this repository there are only the basic buildingblocks, when you want to simulate a specific robot you should look at the robot specific repositories like mobile robot control (https://github.com/augmentedfabricationlab/mobile_robot_control). There these Docker files are  started using a docker-compose.yml file.
+
 ## go to the directory your dockerfile is located in
 cd .\path\to\file\
 
