@@ -4,7 +4,7 @@
 # Usage:
 #  docker pull augmentedfabricationlab/ros-abb-fabtory-planner
 
-FROM daricht/ros-noetic-moveit
+FROM augmentedfabricationlab/ros-noetic-moveit
 LABEL maintainer "David Richter <david.richter@tum.de>"
 
 SHELL ["/bin/bash","-c"]

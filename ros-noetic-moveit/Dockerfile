@@ -6,8 +6,8 @@
 
 ARG FROM_IMAGE_TAG
 
-FROM daricht/ros-noetic-base:latest
-LABEL maintainer "Gonzalo Casas <casas@arch.ethz.ch>"
+FROM augmentedfabricationlab/ros-noetic-base:latest
+LABEL maintainer "David Richter <david.richter@tum.de>"
 
 SHELL ["/bin/bash","-c"]
 
